@@ -1,8 +1,8 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
 def get_engine():
-    user = "admin"
-    password = "admin123"
+    user = "postgres"
+    password = "postgres123"
     host = "localhost"
     port = "5432"
     database = "sports_betting_analytics"
@@ -14,5 +14,5 @@ def get_engine():
 if __name__ == "__main__":
     engine = get_engine()
     with engine.connect() as conn:
-        result = conn.execute("SELECT 'Connection successful!'")
+        result = conn.execute(text("SELECT 'Connection successful!'"))
         print(result.fetchone())
